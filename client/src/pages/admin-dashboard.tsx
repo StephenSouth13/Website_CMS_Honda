@@ -5,21 +5,50 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Users, Bike, Star } from "lucide-react";
 
+// 💡 Thêm kiểu dữ liệu cho dữ liệu từ API
+interface Motorcycle {
+  id: number;
+  name: string;
+  category: string;
+  price: string;
+  inStock: boolean;
+}
+
+interface TestDrive {
+  id: number;
+  fullName: string;
+  motorcycleName: string;
+  email: string;
+  status: "pending" | "approved" | "rejected";
+}
+
+interface Contact {
+  id: number;
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface Promotion {
+  id: number;
+  title: string;
+  isActive: boolean;
+}
+
 export default function AdminDashboard() {
-  // Queries to fetch admin data
-  const { data: motorcycles = [], isLoading: loadingMotorcycles } = useQuery({
+  const { data: motorcycles = [], isLoading: loadingMotorcycles } = useQuery<Motorcycle[]>({
     queryKey: ["/api/admin/motorcycles"],
   });
 
-  const { data: testDrives = [], isLoading: loadingTestDrives } = useQuery({
+  const { data: testDrives = [], isLoading: loadingTestDrives } = useQuery<TestDrive[]>({
     queryKey: ["/api/admin/test-drives"],
   });
 
-  const { data: contacts = [], isLoading: loadingContacts } = useQuery({
+  const { data: contacts = [], isLoading: loadingContacts } = useQuery<Contact[]>({
     queryKey: ["/api/admin/contacts"],
   });
 
-  const { data: promotions = [], isLoading: loadingPromotions } = useQuery({
+  const { data: promotions = [], isLoading: loadingPromotions } = useQuery<Promotion[]>({
     queryKey: ["/api/promotions"],
   });
 
@@ -41,7 +70,7 @@ export default function AdminDashboard() {
             <CardContent>
               <div className="text-2xl font-bold">{motorcycles.length}</div>
               <p className="text-xs text-muted-foreground">
-                {motorcycles.filter((m: any) => m.inStock).length} in stock
+                {motorcycles.filter((m) => m.inStock).length} in stock
               </p>
             </CardContent>
           </Card>
@@ -54,7 +83,7 @@ export default function AdminDashboard() {
             <CardContent>
               <div className="text-2xl font-bold">{testDrives.length}</div>
               <p className="text-xs text-muted-foreground">
-                {testDrives.filter((t: any) => t.status === "pending").length} pending
+                {testDrives.filter((t) => t.status === "pending").length} pending
               </p>
             </CardContent>
           </Card>
@@ -77,7 +106,7 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {promotions.filter((p: any) => p.isActive).length}
+                {promotions.filter((p) => p.isActive).length}
               </div>
               <p className="text-xs text-muted-foreground">Running campaigns</p>
             </CardContent>
@@ -128,7 +157,7 @@ export default function AdminDashboard() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {motorcycles.slice(0, 5).map((motorcycle: any) => (
+                  {motorcycles.slice(0, 5).map((motorcycle) => (
                     <div key={motorcycle.id} className="flex justify-between items-center p-4 border rounded">
                       <div>
                         <h3 className="font-medium">{motorcycle.name}</h3>
@@ -164,7 +193,7 @@ export default function AdminDashboard() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {testDrives.slice(0, 5).map((request: any) => (
+                  {testDrives.slice(0, 5).map((request) => (
                     <div key={request.id} className="flex justify-between items-center p-4 border rounded">
                       <div>
                         <h3 className="font-medium">{request.fullName}</h3>
@@ -172,11 +201,17 @@ export default function AdminDashboard() {
                         <p className="text-sm text-gray-500">{request.email}</p>
                       </div>
                       <div className="text-right">
-                        <Badge variant={
-                          request.status === "approved" ? "default" :
-                          request.status === "pending" ? "secondary" :
-                          request.status === "rejected" ? "destructive" : "outline"
-                        }>
+                        <Badge
+                          variant={
+                            request.status === "approved"
+                              ? "default"
+                              : request.status === "pending"
+                              ? "secondary"
+                              : request.status === "rejected"
+                              ? "destructive"
+                              : "outline"
+                          }
+                        >
                           {request.status}
                         </Badge>
                       </div>

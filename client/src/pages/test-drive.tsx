@@ -256,12 +256,13 @@ export default function TestDrivePage() {
                           <span>Ghi chú</span>
                         </FormLabel>
                         <FormControl>
-                          <Textarea
-                            rows={4}
-                            placeholder="Ghi chú thêm về yêu cầu của bạn..."
-                            {...field}
-                          />
-                        </FormControl>
+  <Textarea
+    rows={4}
+    placeholder="Ghi chú thêm về yêu cầu của bạn..."
+    {...field}
+    value={field.value ?? ""}
+  />
+</FormControl>
                         <FormMessage />
                       </FormItem>
                     )}

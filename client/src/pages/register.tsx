@@ -189,10 +189,11 @@ export default function RegisterPage() {
                         </FormLabel>
                         <FormControl>
                           <Input
-                            type="tel"
-                            placeholder="Nhập số điện thoại"
-                            {...field}
-                          />
+  type="tel"
+  placeholder="Nhập số điện thoại"
+  {...field}
+  value={field.value ?? ""}
+/>
                         </FormControl>
                         <FormMessage />
                       </FormItem>

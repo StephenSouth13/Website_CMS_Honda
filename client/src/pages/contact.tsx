@@ -215,11 +215,12 @@ export default function ContactPage() {
                         </FormLabel>
                         <FormControl>
                           <Input
-                            type="email"
-                            placeholder="Nhập địa chỉ email"
-                            className="bg-white"
-                            {...field}
-                          />
+  type="email"
+  placeholder="Nhập địa chỉ email"
+  className="bg-white"
+  {...field}
+  value={field.value ?? ""} // ✅ Fallback về chuỗi rỗng nếu null hoặc undefined
+/>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
