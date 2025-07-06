@@ -1,0 +1,88 @@
+🔐 1. Dashboard riêng cho Admin (sau khi đăng nhập)
+Trang admin-dashboard.html hoặc /admin/
+Khi đăng nhập bằng tài khoản admin, sẽ chuyển đến dashboard riêng, không ảnh hưởng các trang public (trang chủ, sản phẩm, v.v.)
+
+Chức năng trong dashboard:
+📦 Quản lý sản phẩm:
+
+Danh sách sản phẩm
+
+Nút: Thêm sản phẩm mới (form với ảnh, mô tả, giá, loại xe)
+
+Sửa/Xóa sản phẩm
+
+📸 Upload ảnh sản phẩm:
+
+Có trình chọn file và preview ảnh
+
+📢 Đăng bài viết/khuyến mãi:
+
+Giao diện nhập tiêu đề, nội dung, ảnh
+
+Hiển thị trong promotion.html hoặc news.html
+
+📋 Quản lý lịch lái thử:
+
+Bảng thông tin người đã book lịch (tên, số điện thoại, xe, ngày hẹn)
+
+Tự động hiển thị các dữ liệu đã gửi về qua form
+
+UI:
+Sidebar trái: Dashboard / Sản phẩm / Khuyến mãi / Lịch lái thử / Đăng xuất
+
+Header cố định: Xin chào Admin + Avatar
+
+Giao diện đẹp, dùng Tailwind + có bảng, modal, v.v.
+
+🧑‍💻 2. Phân quyền
+Nếu tài khoản là "admin", sau khi đăng nhập → chuyển đến dashboard
+
+Nếu tài khoản là khách (user), đăng nhập xong vẫn xem trang bình thường (có thể thêm tính năng like sản phẩm, lưu sản phẩm yêu thích...)
+
+💾 3. (Giả lập CMS) – Không cần backend vẫn có thể demo
+Dùng localStorage hoặc tạo giả JSON để mô phỏng lưu sản phẩm, danh sách bài viết, đăng ký lái thử.
+
+Hoặc, nếu muốn gửi và nhận dữ liệu thật:
+
+Dùng Firebase hoặc Google Sheets API để lưu các lịch đặt lịch
+
+Dùng EmailJS để gửi form book lịch đến quachthanhlong2k3@gmail.com
+
+✅ Checklist Giao Diện Đã Có:
+Mục	Trạng thái
+Trang chủ (Hero, xe nổi bật)	✅
+Trang sản phẩm có filter	✅
+Chi tiết sản phẩm	✅
+Đăng ký lái thử	✅ (gửi mail)
+Trang khuyến mãi	✅
+Trang dịch vụ + giá	✅
+Trang liên hệ	✅
+Trang giới thiệu	✅
+Đăng nhập / Đăng ký	✅
+📌 Dashboard Admin	🟥 Nên bổ sung
+📌 Upload sản phẩm / bài viết	🟥 Nên bổ sung
+
+✨ BONUS: Nếu bạn muốn thật chuyên nghiệp
+Lọc sản phẩm nâng cao (chọn nhiều điều kiện)
+
+Dark mode toggle
+
+Hiển thị trạng thái đăng nhập góc phải header (avatar + logout)
+
+Modal popup hiển thị chi tiết khuyến mãi
+
+SEO tối ưu: thẻ meta, ảnh có alt, phân cấp heading
+
+🔚 Kết luận
+✍️ Bạn nên gửi lại yêu cầu bổ sung như sau:
+Please add an Admin Dashboard (e.g., admin-dashboard.html) accessible after login using an admin account.
+Inside the dashboard, allow:
+
+Posting and editing products (with image upload)
+
+Managing test ride bookings (view submitted forms)
+
+Adding promotional campaigns (CMS-like interface)
+
+Users should still be able to browse the website normally.
+Send test ride booking data to: quachthanhlong2k3@gmail.com.

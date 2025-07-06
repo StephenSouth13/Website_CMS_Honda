@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(0, 84.2%, 40.2%);
+  --primary-foreground: hsl(60, 9.1%, 97.8%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Honda brand colors */
+  --honda-red: hsl(0, 84.2%, 40.2%);
+  --honda-red-light: hsl(0, 84.2%, 50.2%);
+  --honda-black: hsl(220, 13%, 9%);
+  --honda-gray: hsl(215, 14%, 34%);
+  --honda-gray-light: hsl(220, 14%, 96%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(0, 84.2%, 40.2%);
+  --primary-foreground: hsl(60, 9.1%, 97.8%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .hero-gradient {
+    background: linear-gradient(135deg, rgba(185, 28, 28, 0.9) 0%, rgba(17, 24, 39, 0.7) 100%);
+  }
+  
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-honda {
+    background: linear-gradient(135deg, var(--honda-red) 0%, var(--honda-red-light) 100%);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-honda:hover {
+    background: linear-gradient(135deg, hsl(0, 84.2%, 35.2%) 0%, var(--honda-red) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(185, 28, 28, 0.3);
+  }
+  
+  .floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+  
+  .navbar-scroll {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .text-honda-red {
+    color: var(--honda-red);
+  }
+
+  .text-honda-black {
+    color: var(--honda-black);
+  }
+
+  .text-honda-gray {
+    color: var(--honda-gray);
+  }
+
+  .bg-honda-red {
+    background-color: var(--honda-red);
+  }
+
+  .bg-honda-black {
+    background-color: var(--honda-black);
+  }
+
+  .bg-honda-gray-light {
+    background-color: var(--honda-gray-light);
+  }
+
+  .border-honda-red {
+    border-color: var(--honda-red);
+  }
+}

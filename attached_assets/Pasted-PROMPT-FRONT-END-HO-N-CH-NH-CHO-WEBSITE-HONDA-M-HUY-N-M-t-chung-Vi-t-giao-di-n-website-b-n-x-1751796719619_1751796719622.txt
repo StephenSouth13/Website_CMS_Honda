@@ -1,0 +1,142 @@
+PROMPT FRONT-END HOÀN CHỈNH CHO WEBSITE HONDA MỸ HUYỀN
+💬 Mô tả chung:
+
+Viết giao diện website bán xe máy Honda Mỹ Huyền bằng HTML + Tailwind CSS. Thiết kế hiện đại, đẹp, responsive trên mọi thiết bị (desktop, tablet, mobile), tối ưu trải nghiệm người dùng.
+Màu chủ đạo: trắng – đỏ – đen (tông màu thương hiệu Honda).
+Website bao gồm tất cả các trang đầy đủ: Trang chủ, sản phẩm, chi tiết xe, khuyến mãi, dịch vụ, đăng ký lái thử, liên hệ, giới thiệu, đăng nhập/đăng ký.
+
+📁 Cấu trúc thư mục
+css
+Sao chép
+Chỉnh sửa
+/honda-my-huyen
+├── index.html                // Trang chủ
+├── products.html             // Danh sách xe
+├── product-detail.html       // Chi tiết 1 xe
+├── promotion.html            // Trang khuyến mãi
+├── services.html             // Dịch vụ sau bán hàng
+├── test-drive.html           // Đăng ký lái thử
+├── contact.html              // Liên hệ
+├── about.html                // Giới thiệu đại lý
+├── login.html                // Đăng nhập
+├── register.html             // Đăng ký tài khoản
+├── components/
+│   ├── header.html           // Navbar chung
+│   ├── footer.html           // Footer chung
+├── css/
+│   └── styles.css            // Tailwind + custom CSS
+├── js/
+│   └── script.js             // Xử lý toggle menu, form
+├── assets/
+│   ├── img/                  // Thư mục ảnh xe, banner
+│   └── icons/                // Icon mạng xã hội, gọi điện
+📌 Yêu cầu chi tiết cho từng trang
+🏠 index.html – Trang chủ
+Hero banner lớn (ảnh SH Mode, Winner X, Vision…)
+
+Slider khuyến mãi
+
+Các dòng xe nổi bật (dùng card lưới)
+
+Button “Xem thêm” → trang sản phẩm
+
+Giới thiệu ngắn về Honda Mỹ Huyền
+
+CTA: Đăng ký lái thử
+
+🚗 products.html – Danh sách xe
+Bộ lọc theo: loại xe (tay ga, số, côn tay), giá, màu
+
+Danh sách card xe: ảnh, tên xe, giá, nút “Xem chi tiết”
+
+Hover đẹp cho từng card
+
+🔍 product-detail.html – Chi tiết xe
+Ảnh lớn, chọn màu
+
+Thông số kỹ thuật (hiển thị bảng)
+
+Giá niêm yết + giá khuyến mãi
+
+Nút “Đăng ký lái thử” (dẫn sang form)
+
+Có tab mô tả, đánh giá
+
+🎁 promotion.html – Khuyến mãi
+Danh sách chương trình: tiêu đề, mô tả, ngày áp dụng
+
+Ảnh banner đẹp
+
+🛠 services.html – Dịch vụ
+Dịch vụ bảo hành, sửa chữa, bảo trì định kỳ
+
+Bảng giá dịch vụ tham khảo
+
+Quy trình tiếp nhận xe
+
+📝 test-drive.html – Đăng ký lái thử
+Form đẹp có validate:
+
+Họ tên, SĐT, Dòng xe muốn lái, Ngày hẹn, Ghi chú
+
+Gửi form (dùng EmailJS hoặc action dummy)
+
+📞 contact.html – Liên hệ
+Thông tin showroom: địa chỉ, số điện thoại, Google Maps
+
+Form liên hệ nhanh
+
+Icon Zalo, Messenger nổi bên phải
+
+🏢 about.html – Giới thiệu
+Lịch sử hình thành, video showroom (nếu có)
+
+Hình ảnh nhân viên, không gian trưng bày
+
+🔐 login.html – Đăng nhập
+Form đăng nhập: email + password
+
+Đẹp, có thông báo lỗi nếu nhập sai
+
+Nút chuyển sang đăng ký
+
+🧾 register.html – Đăng ký tài khoản
+Form: Họ tên, Email, Mật khẩu, Xác nhận mật khẩu
+
+Có validate, cảnh báo nếu sai
+
+🔗 Header và Footer dùng chung
+header.html
+Logo đại lý
+
+Menu: Trang chủ, Sản phẩm, Khuyến mãi, Dịch vụ, Giới thiệu, Liên hệ
+
+Nút “Đăng nhập / Đăng ký” (phải)
+
+Responsive menu toggle (hamburger menu mobile)
+
+footer.html
+Địa chỉ showroom, giờ làm việc
+
+Icon mạng xã hội (Facebook, Zalo, YouTube…)
+
+Link nhanh: Sản phẩm, Dịch vụ, Khuyến mãi
+
+Dòng chữ:
+
+© 2025 Honda Mỹ Huyền | Thiết kế bởi [phòng CNTT]
+
+🧩 Tính năng bổ sung hoàn thiện
+⭐ Button gọi điện nổi góc dưới bên phải (hiện số gọi)
+
+💬 Zalo chat hoặc Messenger popup
+
+🌙 Dark mode (tuỳ chọn nếu muốn nâng cấp UI)
+
+📱 Tương thích điện thoại, iPad, PC
+
+🎯 Tối ưu SEO cấu trúc thẻ (h1, h2, alt ảnh)
+
+✅ Mục tiêu:
+Viết toàn bộ HTML + Tailwind CSS code đầy đủ cho từng file trên, sử dụng cấu trúc thư mục chuẩn, có thể copy chạy luôn mà không cần sửa. Mỗi trang cần có header, footer, nội dung chính, form có validate.
+

@@ -1,0 +1,141 @@
+Build a complete backend API for a Honda motorcycle dealership website named "Honda Mỹ Huyền". Use Node.js with Express and MongoDB (via Mongoose). The backend should provide full CRUD support for products, test drive bookings, and users (admin + customer).
+
+📦 Database: MongoDB (use Mongoose)
+Design 3 core collections:
+
+1. Users
+js
+Sao chép
+Chỉnh sửa
+{
+  name: String,
+  email: String,
+  password: String,
+  role: "admin" | "customer",
+  createdAt: Date
+}
+Features:
+
+Register, login (email + password)
+
+Admin can view all users
+
+2. Products (motorcycles)
+js
+Sao chép
+Chỉnh sửa
+{
+  name: String,
+  slug: String,
+  description: String,
+  image: String,
+  price: Number,
+  type: "scooter" | "manual" | "clutch",
+  colors: [String],
+  createdAt: Date
+}
+Features:
+
+Admin can create/update/delete products
+
+Public can view all products
+
+Support filtering by type, color, price range
+
+3. TestDriveRequests
+js
+Sao chép
+Chỉnh sửa
+{
+  name: String,
+  phone: String,
+  model: String,
+  date: String,
+  note: String,
+  createdAt: Date
+}
+Features:
+
+Public can submit test drive request via form
+
+Admin can view all requests
+
+Optional: Send confirmation email to quachthanhlong2k3@gmail.com (use Nodemailer)
+
+🌐 API Endpoints
+📋 Authentication:
+POST /api/register – Create new user
+
+POST /api/login – Login and return basic token (JWT or dummy)
+
+🛵 Products:
+GET /api/products – Get all products
+
+GET /api/products/:slug – Get product by slug
+
+POST /api/products – (Admin only) Create product
+
+PUT /api/products/:id – (Admin only) Edit product
+
+DELETE /api/products/:id – (Admin only) Delete product
+
+📝 Test Drive:
+POST /api/testdrive – Submit test drive form
+
+GET /api/testdrive – (Admin only) View all submissions
+
+💌 Email (optional)
+Use Nodemailer to send test drive form content to quachthanhlong2k3@gmail.com
+
+⚙️ Technologies:
+Node.js + Express
+
+MongoDB (via Mongoose)
+
+Body-parser / CORS middleware
+
+Authentication (JWT or session optional)
+
+Store images via image field (store links or base64)
+
+🚀 Deployment:
+Compatible with Replit Node.js projects
+
+Create a .env file with:
+
+ini
+Sao chép
+Chỉnh sửa
+MONGODB_URI=your-mongodb-url
+EMAIL_USER=...
+EMAIL_PASS=...
+✅ Final Goal:
+A complete backend with database for a motorcycle dealership website. Backend can connect to a frontend (built in HTML/Tailwind or React), and allow both customers and admin to interact with:
+
+Product listings
+
+Test drive booking
+
+Admin management of inventory and submissions
+
+Clean code structure with routes, models, controllers
+
+💡 Bonus: Suggested Folder Structure
+bash
+Sao chép
+Chỉnh sửa
+/backend
+├── server.js
+├── .env
+├── routes/
+│   ├── auth.js
+│   ├── products.js
+│   └── testdrive.js
+├── controllers/
+│   ├── authController.js
+│   ├── productController.js
+│   └── testdriveController.js
+├── models/
+│   ├── User.js
+│   ├── Product.js
+│   └── TestDrive.js
