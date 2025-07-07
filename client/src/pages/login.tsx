@@ -4,7 +4,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form, FormControl, FormField, FormItem, FormLabel, FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/use-auth";
@@ -18,6 +20,17 @@ const loginSchema = z.object({
 });
 
 type LoginFormData = z.infer<typeof loginSchema>;
+
+interface User {
+  id: number;
+  role: string | null;
+  email: string;
+  username: string;
+  password: string;
+  fullName: string;
+  phone: string | null;
+  createdAt: Date | null;
+}
 
 export default function LoginPage() {
   const { toast } = useToast();
@@ -35,44 +48,33 @@ export default function LoginPage() {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-    setIsLoading(true);
-    try {
-      const response = await apiRequest("/api/login", {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
-      const user = response;
-      
-      toast({
-        title: "Đăng nhập thành công!",
-        description: `Chào mừng ${user.fullName} trở lại Honda Mỹ Huyền`,
-      });
-      
-      // Set user in auth context
-      login(user);
-      
-      // Redirect based on user role
-      if (user.role === "admin") {
-        setLocation("/admin");
-      } else {
-        setLocation("/");
-      }
-    } catch (error: any) {
-      let errorMessage = "Đăng nhập thất bại. Vui lòng thử lại.";
-      
-      if (error.message.includes("401")) {
-        errorMessage = "Tên đăng nhập hoặc mật khẩu không chính xác.";
-      }
-      
-      toast({
-        title: "Đăng nhập thất bại",
-        description: errorMessage,
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
+  setIsLoading(true);
+  try {
+    const res = await apiRequest("POST", "/api/login", data); // ✅ Sửa tại đây
+    const user: User = await res.json(); // 👈 giữ nguyên nếu apiRequest chỉ trả Response
+
+    toast({
+      title: "Đăng nhập thành công!",
+      description: `Chào mừng ${user.fullName} trở lại Honda Mỹ Huyền`,
+    });
+
+    login(user);
+    setLocation(user.role === "admin" ? "/admin" : "/");
+  } catch (error: any) {
+    let errorMessage = "Đăng nhập thất bại. Vui lòng thử lại.";
+    if (error.message?.includes("401")) {
+      errorMessage = "Tên đăng nhập hoặc mật khẩu không chính xác.";
     }
-  };
+    toast({
+      title: "Đăng nhập thất bại",
+      description: errorMessage,
+      variant: "destructive",
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   return (
     <div className="py-20 bg-honda-gray-light min-h-screen flex items-center justify-center">
@@ -83,14 +85,10 @@ export default function LoginPage() {
               <div className="w-16 h-16 bg-honda-red rounded-full flex items-center justify-center mx-auto mb-4">
                 <Bike className="h-8 w-8 text-white" />
               </div>
-              <CardTitle className="text-2xl font-bold text-honda-black">
-                Đăng nhập
-              </CardTitle>
-              <p className="text-honda-gray">
-                Đăng nhập vào tài khoản Honda Mỹ Huyền của bạn
-              </p>
+              <CardTitle className="text-2xl font-bold text-honda-black">Đăng nhập</CardTitle>
+              <p className="text-honda-gray">Đăng nhập vào tài khoản Honda Mỹ Huyền của bạn</p>
             </CardHeader>
-            
+
             <CardContent className="p-6">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -104,10 +102,7 @@ export default function LoginPage() {
                           <span>Tên đăng nhập hoặc Email</span>
                         </FormLabel>
                         <FormControl>
-                          <Input
-                            placeholder="Nhập tên đăng nhập hoặc email"
-                            {...field}
-                          />
+                          <Input placeholder="Nhập tên đăng nhập hoặc email" {...field} value={field.value ?? ""} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -129,6 +124,7 @@ export default function LoginPage() {
                               type={showPassword ? "text" : "password"}
                               placeholder="Nhập mật khẩu"
                               {...field}
+                              value={field.value ?? ""}
                             />
                             <Button
                               type="button"
@@ -172,9 +168,7 @@ export default function LoginPage() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-gray-200">
-                <h4 className="text-sm font-medium text-honda-black mb-3">
-                  Lợi ích khi có tài khoản:
-                </h4>
+                <h4 className="text-sm font-medium text-honda-black mb-3">Lợi ích khi có tài khoản:</h4>
                 <ul className="space-y-2 text-sm text-honda-gray">
                   <li className="flex items-center space-x-2">
                     <div className="w-1.5 h-1.5 bg-honda-red rounded-full"></div>
